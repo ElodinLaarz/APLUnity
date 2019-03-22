@@ -1,4 +1,5 @@
 APL Unity/Library/**
+APL Unity/Temp/**
 .vs/APL Unity/v15
 
 APL Unity/Library/AnnotationManager
@@ -1086,3 +1087,5 @@ APL Unity/Temp/UnityTempFile-97a7367baa89ca5499b7634eca718c51
 APL Unity/Temp/UnityTempFile-d0d1e7cccba035147b35eca8a9f7a2c9
 APL Unity/Temp/UnityTempFile-d3279a1d7add43f43947d685f6431daa
 APL Unity/Temp/UnityTempFile-f79a0cc48fc678e42b7929a97bfd6e94
+APL Unity/Assets/Scenes/SampleScene.unity
+APL Unity/Assets/Scenes/SampleScene.unity

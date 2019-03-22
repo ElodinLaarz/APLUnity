@@ -1,5 +1,6 @@
 APL Unity/Library/**
 APL Unity/Temp/**
-.vs/APL Unity/v15
-*.ide-wal
-APL Unity/.vs/**
+APL Unity/Logs/**
+APL Unity/Packages/**
+APL Unity/ProjectSettings/**
+APL Unity/APL\ Unity.sln

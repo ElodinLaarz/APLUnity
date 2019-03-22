@@ -9,7 +9,7 @@ public class AlbertandCalebandSharatDuelinC# : MonoBehaviour {
 	void Start () {
     int caleb = 1;
 	}
-	//Caleb Change this is my file poo
+	//Caleb Change this is my file
 	//fuck this language
 	// Update is called once per frame
 	void Update () {

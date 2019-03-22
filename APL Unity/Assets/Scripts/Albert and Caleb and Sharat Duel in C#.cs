@@ -9,7 +9,10 @@ public class AlbertandCalebandSharatDuelinC# : MonoBehaviour {
 	void Start () {
     int caleb = 1;
 	}
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of b8cc788... Albert conflict
 	//Caleb Change this is my file
 	//fuck this language
 	// Update is called once per frame

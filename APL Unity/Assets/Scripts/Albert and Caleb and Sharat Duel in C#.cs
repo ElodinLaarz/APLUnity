@@ -10,7 +10,11 @@ public class AlbertandCalebandSharatDuelinC# : MonoBehaviour {
     int caleb = 1;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	//Caleb Change this is my file poo
+=======
+	//Caleb Change this is my file
+>>>>>>> parent of b8cc788... Albert conflict
 =======
 	//Caleb Change this is my file
 >>>>>>> parent of b8cc788... Albert conflict

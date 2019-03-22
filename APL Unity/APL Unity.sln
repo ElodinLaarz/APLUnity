@@ -1,12 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-<<<<<<< HEAD
 
-=======
-# Shoop Da Whoop
-# This is not the edit.
->>>>>>> aaf2baa9c74b4b848e374a955e7811c90fc0014e
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -1,3 +1,5 @@
 APL Unity/Library/**
 APL Unity/Temp/**
 .vs/APL Unity/v15
+*.ide-wal
+APL Unity/.vs/**

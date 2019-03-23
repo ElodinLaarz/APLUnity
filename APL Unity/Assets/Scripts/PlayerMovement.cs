@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
 
     //Allows us to add the collider of our player to the movement script.
     public Rigidbody2D rb;
+    public Animator animator;
 
     //private float sprintSpeed;
     public float maxSpeed;
@@ -37,5 +38,7 @@ public class PlayerMovement : MonoBehaviour
         // Move senteces
         rb.velocity = new Vector2(Mathf.Lerp(0, Input.GetAxis("Horizontal") * curSpeed, 0.8f),
                                              Mathf.Lerp(0, Input.GetAxis("Vertical") * curSpeed, 0.8f));
+        animator.SetFloat("Xspeed", rb.velocity.x);
+        animator.SetFloat("Yspeed", rb.velocity.y);
     }
 }

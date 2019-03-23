@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AlbertandCalebandSharatDuelinC# : MonoBehaviour {
+public class AlbertandCalebandSharatDuelinCSharp : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

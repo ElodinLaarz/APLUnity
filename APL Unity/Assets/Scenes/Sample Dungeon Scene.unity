@@ -179,7 +179,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &356036445
 GameObject:
@@ -331,7 +331,7 @@ PrefabInstance:
     - target: {fileID: 8674379736199093179, guid: 3f6f5cf4f28ba2044ac54d7fe4fb9d99,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8674379736199093179, guid: 3f6f5cf4f28ba2044ac54d7fe4fb9d99,
         type: 3}
@@ -8077,7 +8077,7 @@ PrefabInstance:
     - target: {fileID: 3658513876768302134, guid: 0950419437d636042a470779d78c06d1,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3658513876768302134, guid: 0950419437d636042a470779d78c06d1,
         type: 3}
@@ -9132,7 +9132,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 5.706679
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

@@ -7,6 +7,8 @@ public class Projectile : MonoBehaviour {
     public float speed = 20f;
     public Rigidbody2D rb;
 
+    public ParticleSystem enemyHitParticles;
+
     public int damage = 10;
 
 	// Use this for initialization
@@ -20,8 +22,19 @@ public class Projectile : MonoBehaviour {
         Enemy enemy = hitInfo.collider.GetComponent<Enemy>();
         if(enemy != null)
         {
-            enemy.TakeDamage(damage);
+            hitEnemy(enemy);
         }
         Destroy(gameObject);
+    }
+
+    void hitEnemy(Enemy enemy)
+    {
+        Instantiate(enemyHitParticles, transform.position, transform.rotation);
+        Damage(enemy);
+    }
+
+    void Damage(Enemy enemy)
+    {
+        enemy.TakeDamage(damage);
     }
 }

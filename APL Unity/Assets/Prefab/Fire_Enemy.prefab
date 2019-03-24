@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3658513876768302135}
   - component: {fileID: 3658513876768302088}
   - component: {fileID: 8588058587684685746}
+  - component: {fileID: 5220110283526093297}
   m_Layer: 0
   m_Name: Fire_Enemy
   m_TagString: Untagged
@@ -115,4 +116,21 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -0.03999999, y: -0.18630612}
   serializedVersion: 2
+<<<<<<< HEAD
   m_Radius: 0.29069388
+=======
+  m_Radius: 0.227
+--- !u!114 &5220110283526093297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3658513876768302089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed8c327b4af2163409a4034863f054a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+>>>>>>> 2948063d363f8f2aae6ce03fa52200207668e473

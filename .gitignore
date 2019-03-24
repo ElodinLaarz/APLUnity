@@ -1,5 +1,6 @@
 APL Unity/.vs/**
 APL Unity/Assets/Plugins/**
+APL Unity/Assets/TextMesh Pro/**
 APL Unity/Library/**
 APL Unity/Temp/**
 APL Unity/Logs/**
@@ -8,3 +9,4 @@ APL Unity/ProjectSettings/**
 APL Unity/APL\ Unity.sln
 APL Unity/Assembly-CSharp.csproj
 APL Unity/Assets/Plugins.meta
+APL Unity/Assets/TextMesh Pro.meta

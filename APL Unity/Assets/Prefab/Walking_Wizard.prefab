@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5886371420276097040}
   - component: {fileID: 1578860500608121126}
   - component: {fileID: 265429064357796971}
+  - component: {fileID: 7256675053397213627}
   m_Layer: 0
   m_Name: Walking_Wizard
   m_TagString: Untagged
@@ -91,7 +92,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &1578860500608121126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,6 +156,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!70 &7256675053397213627
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 265429064357796974}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.75, y: 1}
+  m_Direction: 0
 --- !u!1 &3056267979325681254
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,7 +196,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3056267979325681254}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: -0.281, y: 0.034, z: 0}
+  m_LocalPosition: {x: -0.464, y: 0.034, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2546363459100575126}

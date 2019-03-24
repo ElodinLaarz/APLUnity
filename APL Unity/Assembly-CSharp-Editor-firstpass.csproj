@@ -320,6 +320,30 @@
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
+    <Reference Include="AsyncBridge.Net35">
+      <HintPath>D:/Users/Laarz/Documents/GitHub/APLUnity/APL Unity/Assets/Plugins/GitHub/Editor/AsyncBridge.Net35.dll</HintPath>
+    </Reference>
+    <Reference Include="GitHub.Api">
+      <HintPath>D:/Users/Laarz/Documents/GitHub/APLUnity/APL Unity/Assets/Plugins/GitHub/Editor/GitHub.Api.dll</HintPath>
+    </Reference>
+    <Reference Include="GitHub.Logging">
+      <HintPath>D:/Users/Laarz/Documents/GitHub/APLUnity/APL Unity/Assets/Plugins/GitHub/Editor/GitHub.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="GitHub.Unity">
+      <HintPath>D:/Users/Laarz/Documents/GitHub/APLUnity/APL Unity/Assets/Plugins/GitHub/Editor/GitHub.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="GitHub.UnityShim">
+      <HintPath>D:/Users/Laarz/Documents/GitHub/APLUnity/APL Unity/Assets/Plugins/GitHub/Editor/GitHub.UnityShim.dll</HintPath>
+    </Reference>
+    <Reference Include="ReadOnlyCollectionsInterfaces">
+      <HintPath>D:/Users/Laarz/Documents/GitHub/APLUnity/APL Unity/Assets/Plugins/GitHub/Editor/ReadOnlyCollectionsInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="sfw.net">
+      <HintPath>D:/Users/Laarz/Documents/GitHub/APLUnity/APL Unity/Assets/Plugins/GitHub/Editor/sfw.net.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading">
+      <HintPath>D:/Users/Laarz/Documents/GitHub/APLUnity/APL Unity/Assets/Plugins/GitHub/Editor/System.Threading.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.Advertisements">
       <HintPath>D:/Users/Laarz/Documents/GitHub/APLUnity/APL Unity/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
     </Reference>
@@ -334,30 +358,6 @@
     </Reference>
     <Reference Include="UnityEditor.Purchasing">
       <HintPath>D:/Users/Laarz/Documents/GitHub/APLUnity/APL Unity/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
-    </Reference>
-    <Reference Include="AsyncBridge.Net35">
-      <HintPath>D:/Users/Laarz/Documents/GitHub/APLUnity/APL Unity/Assets/Plugins/GitHub/Editor/AsyncBridge.Net35.dll</HintPath>
-    </Reference>
-    <Reference Include="GitHub.Api">
-      <HintPath>D:/Users/Laarz/Documents/GitHub/APLUnity/APL Unity/Assets/Plugins/GitHub/Editor/GitHub.Api.dll</HintPath>
-    </Reference>
-    <Reference Include="GitHub.Unity">
-      <HintPath>D:/Users/Laarz/Documents/GitHub/APLUnity/APL Unity/Assets/Plugins/GitHub/Editor/GitHub.Unity.dll</HintPath>
-    </Reference>
-    <Reference Include="sfw.net">
-      <HintPath>D:/Users/Laarz/Documents/GitHub/APLUnity/APL Unity/Assets/Plugins/GitHub/Editor/sfw.net.dll</HintPath>
-    </Reference>
-    <Reference Include="GitHub.UnityShim">
-      <HintPath>D:/Users/Laarz/Documents/GitHub/APLUnity/APL Unity/Assets/Plugins/GitHub/Editor/GitHub.UnityShim.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Threading">
-      <HintPath>D:/Users/Laarz/Documents/GitHub/APLUnity/APL Unity/Assets/Plugins/GitHub/Editor/System.Threading.dll</HintPath>
-    </Reference>
-    <Reference Include="GitHub.Logging">
-      <HintPath>D:/Users/Laarz/Documents/GitHub/APLUnity/APL Unity/Assets/Plugins/GitHub/Editor/GitHub.Logging.dll</HintPath>
-    </Reference>
-    <Reference Include="ReadOnlyCollectionsInterfaces">
-      <HintPath>D:/Users/Laarz/Documents/GitHub/APLUnity/APL Unity/Assets/Plugins/GitHub/Editor/ReadOnlyCollectionsInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>D:/Program Files/Unity/Hub/Editor/2018.2.17f1/Editor/Data/MonoBleedingEdge/lib/mono/2.0-api/mscorlib.dll</HintPath>

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5886371420276097040}
   - component: {fileID: 1578860500608121126}
   - component: {fileID: 265429064357796971}
-  - component: {fileID: 7256675053397213627}
+  - component: {fileID: 1446196206119543118}
   m_Layer: 0
   m_Name: Walking_Wizard
   m_TagString: Untagged
@@ -156,8 +156,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!70 &7256675053397213627
-CapsuleCollider2D:
+--- !u!58 &1446196206119543118
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -170,8 +170,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.75, y: 1}
-  m_Direction: 0
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &3056267979325681254
 GameObject:
   m_ObjectHideFlags: 0

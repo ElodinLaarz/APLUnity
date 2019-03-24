@@ -6,6 +6,8 @@ public class Enemy : MonoBehaviour
 {
     public int health = 100;
 
+    public int damage = 10;
+
     //public GameObject deathEffect;
 
     public void TakeDamage(int damage)
@@ -17,6 +19,16 @@ public class Enemy : MonoBehaviour
             Die();
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        PlayerStats playerStats = collision.collider.GetComponent<PlayerStats>();
+        if(playerStats != null)
+        {
+            playerStats.Damage(damage);
+        }
+    }
+
 
     void Die()
     {

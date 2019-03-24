@@ -130,3 +130,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  sr: {fileID: 3658513876768302135}
+  fc: {r: 1, g: 0, b: 0, a: 1}
+  damage: 10

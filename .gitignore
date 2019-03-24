@@ -1,4 +1,5 @@
 APL Unity/.vs/**
+APL Unity/Assets/Prefab/*.meta
 APL Unity/Library/**
 APL Unity/Temp/**
 APL Unity/Logs/**

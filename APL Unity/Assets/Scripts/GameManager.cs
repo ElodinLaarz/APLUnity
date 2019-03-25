@@ -11,23 +11,39 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance = null;              //Static instance of GameManager which allows it to be accessed by any other script.
 
-       
+    [Header("Player")]  
     public GameObject player;
     public Weapon playerWeapon;
     public Sprite playerWeaponSprite;
 
+    public int maxPotions = 5;
+    private int curHpPot = 0;
+    private int curManaPot = 0;
+
+    private int maxInventory = 20;
+    private List<Item> inventory;
+
+    [Header("GUI Text Boxes")]
     public TextMeshProUGUI tmpgHealth;
     public TextMeshProUGUI tmpgXP;
     public TextMeshProUGUI tmpgLVL;
-
-    public Image weaponImage;
     public TextMeshProUGUI tmpgWeapon;
+    public TextMeshProUGUI tmpgHpPot;
+    public TextMeshProUGUI tmpgManaPot;
+
+    [Header("GUI Images")]
+    public Image weaponImage;
+    public Image hpImage;
+    public Image manaImage;
+
+
 
     private PlayerStats playerStats;
 
     private SpriteRenderer sr;
     private Color normalColor;
 
+    [Header("Flashing Color")]
     // flashing color
     public Color fc;
 
@@ -114,6 +130,33 @@ public class GameManager : MonoBehaviour
         toFlash.color = normalColor;
     }
 
+    public bool GiveHPPot()
+    {
+        bool canPickup = (curHpPot < maxPotions);
+        if (canPickup)
+        {
+            curHpPot++;
+        }
+        RefreshStats();
+        return canPickup;
+    }
+
+    public bool GiveManaPot()
+    {
+        bool canPickup = (curManaPot < maxPotions);
+        if (canPickup)
+        {
+            curManaPot++;
+        }
+        RefreshStats();
+        return canPickup;
+    }
+
+
+    public void GiveItem(Item item)
+    {
+        inventory.Add(item);
+    }
 
     public void XpReward(int xp)
     {
@@ -129,15 +172,26 @@ public class GameManager : MonoBehaviour
 
     void RefreshStats()
     {
+        //stats
         tmpgHealth.text = playerStats.health.ToString();
         tmpgXP.text = playerStats.curXP.ToString() + "/" + playerStats.lvlUpXP.ToString();
         tmpgLVL.text = playerStats.curLVL.ToString();
+
+        //potions
+        tmpgHpPot.text = curHpPot.ToString() + "/" + maxPotions.ToString();
+        tmpgManaPot.text = curManaPot.ToString() + "/" + maxPotions.ToString();
     }
 
     void RefreshItem(Weapon weapon)
     {
         tmpgWeapon.text = weapon.itemName + " -- Damage: " + weapon.weaponDamage;
         weaponImage.sprite = weapon.weaponSprite;
+
+    }
+
+    public Vector2 CurrentPotions()
+    {
+        return new Vector2(curHpPot, curManaPot);
     }
 
     public void RestartCurLevel()

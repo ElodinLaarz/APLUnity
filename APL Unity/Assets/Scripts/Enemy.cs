@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public int health = 100;
+    //EnemyStats is at the bottom of this file
+    public EnemyStats enemyStats;
+
+    GameManager gmInstance;
+
 
     // I probably don't need this, but I am not sure how to access the sprite renderer off the top of my head...
     public SpriteRenderer sr;
@@ -24,6 +28,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+        gmInstance = GameManager.instance;
         normalColor = sr.color;
     }
 
@@ -31,8 +36,8 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         StartCoroutine(FlashObject(sr, normalColor, fc));
-        health -= damage;
-        if (health <= 0)
+        enemyStats.curHP -= damage;
+        if (enemyStats.curHP <= 0)
         {
             Die();
         }
@@ -40,10 +45,9 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        PlayerStats playerStats = collision.collider.GetComponent<PlayerStats>();
-        if(playerStats != null)
+        if (collision.collider.tag == "Player") 
         {
-            playerStats.Damage(damage);
+            gmInstance.DamagePlayer(damage);
         }
     }
 
@@ -75,4 +79,10 @@ public class Enemy : MonoBehaviour
         //Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
+}
+
+public class EnemyStats
+{
+    public int curHP = 100;
+    public int xpReward = 10;
 }

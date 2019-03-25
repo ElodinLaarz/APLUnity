@@ -9331,15 +9331,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4914347193903050818, guid: 38960c4164b0e804692dbaf4be7b0e3b,
+    - target: {fileID: 7930488051329600911, guid: 38960c4164b0e804692dbaf4be7b0e3b,
         type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 3b0505f7c1bb87046b060724c1e758d8,
+      propertyPath: m_havePropertiesChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7930488051329600911, guid: 38960c4164b0e804692dbaf4be7b0e3b,
         type: 3}
-    - target: {fileID: 4914347193903050818, guid: 38960c4164b0e804692dbaf4be7b0e3b,
-        type: 3}
-      propertyPath: m_Type
+      propertyPath: m_isInputParsingRequired
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7954336901835037589, guid: 38960c4164b0e804692dbaf4be7b0e3b,

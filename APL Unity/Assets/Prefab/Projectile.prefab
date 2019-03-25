@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 212386603801156198}
   - component: {fileID: 50761667954469310}
   - component: {fileID: 58033966263677344}
-  - component: {fileID: 114442274365547578}
+  - component: {fileID: 114232764412252274}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Untagged
@@ -120,7 +120,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
---- !u!114 &114442274365547578
+--- !u!114 &114232764412252274
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -133,10 +133,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  rb: {fileID: 50761667954469310}
   enemyHitParticles: {fileID: 7036652064246910118, guid: b493b2fda87fdbc458bf5be6fe083adc,
     type: 3}
-  damage: 10
+  damage: 100
 --- !u!1 &7320613466313114932
 GameObject:
   m_ObjectHideFlags: 0

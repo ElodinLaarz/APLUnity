@@ -9,8 +9,8 @@ public class PlayerMovement : MonoBehaviour
     private float curSpeed = 0;
 
     //Allows us to add the collider of our player to the movement script.
-    public Rigidbody2D rb;
     public Animator animator;
+    private Rigidbody2D rb;
 
     //private float sprintSpeed;
     public float maxSpeed;
@@ -22,6 +22,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        rb = gameObject.GetComponent<Rigidbody2D>();
+
         // Future Implementations -- Increase Speed as 'speed items' are collected.
         // plStat = GetComponent<CharacterStat>();
 

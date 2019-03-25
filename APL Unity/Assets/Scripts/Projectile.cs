@@ -2,35 +2,41 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour {
+public class Projectile : MonoBehaviour
+{
 
     public float speed = 20f;
-    public Rigidbody2D rb;
+    //public Rigidbody2D rb;
 
     public ParticleSystem enemyHitParticles;
 
     public int damage = 10;
 
-	// Use this for initialization
-	void Start () {
-        rb.velocity = transform.right * speed;
-	}
+    public static Projectile CreateComponent(GameObject where, int d)
+    {
+        Projectile myC = where.AddComponent<Projectile>();
+        myC.damage = d;
+        return myC;
+    }
+
+    // Use this for initialization
+    void Start()
+    {
+        gameObject.GetComponent<Rigidbody2D>().velocity = transform.right * speed;
+    }
 
     void OnCollisionEnter2D(Collision2D hitInfo)
     {
-        Debug.Log("Enemy hit!");
         if (hitInfo.collider.tag == "Enemy")
         {
             hitEnemy(hitInfo.collider.GetComponent<Enemy>());
         }
-        Debug.Log("should despawn...");
         Destroy(gameObject);
     }
 
     void hitEnemy(Enemy enemy)
     {
         // We keep track of the particle to destroy it after 2 seconds.
-        Debug.Log("should spawn the particles...");
         ParticleSystem effectIns = Instantiate(enemyHitParticles, transform.position, transform.rotation);
         Destroy(effectIns.gameObject, 2f);
 

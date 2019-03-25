@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.SceneManagement;      //Used to restart scene
 using TMPro;
+using UnityEngine.UI;
 
 using System.Collections.Generic;       //Allows us to use Lists. 
 
@@ -12,13 +13,17 @@ public class GameManager : MonoBehaviour
 
        
     public GameObject player;
-    private PlayerStats playerStats;
+    public Weapon playerWeapon;
+    public Sprite playerWeaponSprite;
 
     public TextMeshProUGUI tmpgHealth;
     public TextMeshProUGUI tmpgXP;
     public TextMeshProUGUI tmpgLVL;
 
-    GameManager gameManager;
+    public Image weaponImage;
+    public TextMeshProUGUI tmpgWeapon;
+
+    private PlayerStats playerStats;
 
     private SpriteRenderer sr;
     private Color normalColor;
@@ -68,9 +73,8 @@ public class GameManager : MonoBehaviour
     {
         playerStats = player.GetComponent<PlayerStats>();
         sr = player.GetComponent<SpriteRenderer>();
-        tmpgHealth.text = playerStats.health.ToString();
-        tmpgXP.text = playerStats.curXP.ToString() + "/" + playerStats.lvlUpXP.ToString();
-        tmpgLVL.text = playerStats.curLVL.ToString();
+        RefreshStats();
+        RefreshItem(playerStats.CurWeapon());
 
         normalColor = sr.color;
     }
@@ -128,6 +132,12 @@ public class GameManager : MonoBehaviour
         tmpgHealth.text = playerStats.health.ToString();
         tmpgXP.text = playerStats.curXP.ToString() + "/" + playerStats.lvlUpXP.ToString();
         tmpgLVL.text = playerStats.curLVL.ToString();
+    }
+
+    void RefreshItem(Weapon weapon)
+    {
+        tmpgWeapon.text = weapon.itemName + " -- Damage: " + weapon.weaponDamage;
+        weaponImage.sprite = weapon.weaponSprite;
     }
 
     public void RestartCurLevel()

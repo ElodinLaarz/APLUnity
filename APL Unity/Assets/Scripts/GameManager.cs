@@ -16,12 +16,11 @@ public class GameManager : MonoBehaviour
 
     public TextMeshProUGUI tmpgHealth;
     public TextMeshProUGUI tmpgXP;
-
-    public PlayerStats stats;
+    public TextMeshProUGUI tmpgLVL;
 
     GameManager gameManager;
 
-    public SpriteRenderer sr;
+    private SpriteRenderer sr;
     private Color normalColor;
 
     // flashing color
@@ -39,9 +38,13 @@ public class GameManager : MonoBehaviour
             Debug.LogError("More than one gameManager in scene!");
             return;
         }
-        instance = this;
-        //Sets this to not be destroyed when reloading scene
-        DontDestroyOnLoad(gameObject);
+        else
+        {
+            instance = this;
+        }
+           
+        //At some point we'll want to keep the manager around between levels/scenes
+        //DontDestroyOnLoad(gameObject);
 
         //Still have to implement Board Manager
         //Get a component reference to the attached BoardManager script
@@ -63,20 +66,21 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        player.GetComponent<PlayerStats>();
+        playerStats = player.GetComponent<PlayerStats>();
         sr = player.GetComponent<SpriteRenderer>();
-        tmpgHealth.text = stats.health.ToString();
-        tmpgXP.text = stats.curXP.ToString() + "/" + stats.lvlUpXP.ToString();
-        
+        tmpgHealth.text = playerStats.health.ToString();
+        tmpgXP.text = playerStats.curXP.ToString() + "/" + playerStats.lvlUpXP.ToString();
+        tmpgLVL.text = playerStats.curLVL.ToString();
+
         normalColor = sr.color;
     }
 
     public void DamagePlayer(int d)
     {
         StartCoroutine(FlashObject(sr, normalColor, fc));
-        stats.health -= d;
+        playerStats.health -= d;
         RefreshStats();
-        if (stats.health <= 0)
+        if (playerStats.health <= 0)
         {
             Destroy(player);
             RestartCurLevel();
@@ -107,14 +111,28 @@ public class GameManager : MonoBehaviour
     }
 
 
+    public void XpReward(int xp)
+    {
+        playerStats.curXP += xp;
+        if(playerStats.curXP >= playerStats.lvlUpXP)
+        {
+            playerStats.curXP -= playerStats.lvlUpXP;
+            playerStats.lvlUpXP *= 2;
+            playerStats.curLVL += 1;
+        }
+        RefreshStats();
+    }
+
     void RefreshStats()
     {
-        tmpgHealth.text = stats.health.ToString();
-        tmpgXP.text = stats.curXP.ToString() + "/" + stats.lvlUpXP.ToString();
+        tmpgHealth.text = playerStats.health.ToString();
+        tmpgXP.text = playerStats.curXP.ToString() + "/" + playerStats.lvlUpXP.ToString();
+        tmpgLVL.text = playerStats.curLVL.ToString();
     }
 
     public void RestartCurLevel()
     {
+        playerStats.ResetStats();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

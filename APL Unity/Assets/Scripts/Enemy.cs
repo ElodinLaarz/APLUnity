@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    //EnemyStats is at the bottom of this file
-    public EnemyStats enemyStats;
+    public int curHP = 100;
+    public int expReward = 10;
+    
+    //I would like to separate the stats from the enemy mechanics at some point...
+    //public EnemyStats enemyStats;
 
     GameManager gmInstance;
 
@@ -20,7 +23,7 @@ public class Enemy : MonoBehaviour
     // Time between flashes, total number, and total time to flash.
     private const float flashSpeed = 0.1f;
     private const int totalFlashes = 4;
-    private const float flashTime = totalFlashes*flashSpeed;
+    private const float flashTime = totalFlashes * flashSpeed;
 
     public int damage = 10;
 
@@ -36,8 +39,8 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         StartCoroutine(FlashObject(sr, normalColor, fc));
-        enemyStats.curHP -= damage;
-        if (enemyStats.curHP <= 0)
+        curHP -= damage;
+        if (curHP <= 0)
         {
             Die();
         }
@@ -45,7 +48,7 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.tag == "Player") 
+        if (collision.collider.tag == "Player")
         {
             gmInstance.DamagePlayer(damage);
         }
@@ -77,12 +80,7 @@ public class Enemy : MonoBehaviour
     void Die()
     {
         //Instantiate(deathEffect, transform.position, Quaternion.identity);
+        gmInstance.XpReward(expReward);
         Destroy(gameObject);
     }
-}
-
-public class EnemyStats
-{
-    public int curHP = 100;
-    public int xpReward = 10;
 }

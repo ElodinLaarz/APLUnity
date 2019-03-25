@@ -18,19 +18,19 @@ public class Projectile : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D hitInfo)
     {
-        Debug.Log("Here!!");
-        Enemy enemy = hitInfo.collider.GetComponent<Enemy>();
-        if(enemy != null)
+        Debug.Log("Enemy hit!");
+        if (hitInfo.collider.tag == "Enemy")
         {
-            hitEnemy(enemy);
+            hitEnemy(hitInfo.collider.GetComponent<Enemy>());
         }
+        Debug.Log("should despawn...");
         Destroy(gameObject);
     }
 
     void hitEnemy(Enemy enemy)
     {
         // We keep track of the particle to destroy it after 2 seconds.
-
+        Debug.Log("should spawn the particles...");
         ParticleSystem effectIns = Instantiate(enemyHitParticles, transform.position, transform.rotation);
         Destroy(effectIns.gameObject, 2f);
 

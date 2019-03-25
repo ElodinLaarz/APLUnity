@@ -30,8 +30,9 @@ public class Projectile : MonoBehaviour {
     void hitEnemy(Enemy enemy)
     {
         // We keep track of the particle to destroy it after 2 seconds.
+
         ParticleSystem effectIns = Instantiate(enemyHitParticles, transform.position, transform.rotation);
-        Destroy(effectIns, 2f);
+        Destroy(effectIns.gameObject, 2f);
 
         Damage(enemy);
     }

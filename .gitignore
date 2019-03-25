@@ -6,7 +6,6 @@ APL Unity/Library/**
 APL Unity/Temp/**
 APL Unity/Logs/**
 APL Unity/Packages/**
-APL Unity/ProjectSettings/**
 APL Unity/APL\ Unity.sln
 APL Unity/Assembly-CSharp.csproj
 APL Unity/Assets/Plugins.meta

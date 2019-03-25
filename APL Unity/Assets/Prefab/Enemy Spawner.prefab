@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7430055435121346344}
   - component: {fileID: 7430055435121346358}
   - component: {fileID: 7430055435121346345}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy Spawner
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -129,6 +129,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8c327b4af2163409a4034863f054a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  curHP: 100
+  expReward: 10
   sr: {fileID: 7430055435121346346}
   fc: {r: 1, g: 0, b: 0, a: 0.7254902}
   damage: 10

@@ -210,13 +210,13 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &9093940485000824805
 MonoBehaviour:
@@ -318,15 +318,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4731453692681163589}
     m_Modifications:
-    - target: {fileID: 9076534099790673306, guid: 0b0f8ab2db667c54bbf6e19877672cc5,
-        type: 3}
-      propertyPath: weaponDamage
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 2568817515802670615, guid: 0b0f8ab2db667c54bbf6e19877672cc5,
         type: 3}
       propertyPath: m_Name
       value: Staff
+      objectReference: {fileID: 0}
+    - target: {fileID: 9076534099790673306, guid: 0b0f8ab2db667c54bbf6e19877672cc5,
+        type: 3}
+      propertyPath: weaponDamage
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4007953733161847092, guid: 0b0f8ab2db667c54bbf6e19877672cc5,
         type: 3}

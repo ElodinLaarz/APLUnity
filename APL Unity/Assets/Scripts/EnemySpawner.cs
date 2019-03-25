@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public static bool existence = true;
+    //public static bool existence = true;
     public float spawnRate = 1f;
 
     public Enemy enemyToSpawn;
@@ -16,9 +16,10 @@ public class EnemySpawner : MonoBehaviour
 
     IEnumerator Spawning()
     {
+        float velMag = 10f;
         // Just to not have them all on top of one another.
-        float randomXVel = Random.Range(-3.0f, 3.0f);
-        float randomYVel = Random.Range(-3.0f, 3.0f);
+        float randomXVel = Random.Range(-velMag, velMag);
+        float randomYVel = Random.Range(-velMag, velMag);
 
         Enemy curEnemy = Instantiate(enemyToSpawn, transform.position, transform.rotation);
         curEnemy.GetComponent<Rigidbody2D>().velocity = new Vector2(randomXVel, randomYVel);
@@ -27,7 +28,7 @@ public class EnemySpawner : MonoBehaviour
     }
     private void OnDestroy()
     {
-        existence = false;
+        //existence = false;
         Destroy(gameObject);
     }
 }

@@ -23,6 +23,9 @@ public class GameManager : MonoBehaviour
     private int maxInventory = 20;
     private List<Item> inventory;
 
+    private bool isInvincible = false;
+
+
     [Header("GUI Text Boxes")]
     public TextMeshProUGUI tmpgHealth;
     public TextMeshProUGUI tmpgXP;
@@ -95,16 +98,38 @@ public class GameManager : MonoBehaviour
         normalColor = sr.color;
     }
 
-    public void DamagePlayer(int d)
+    private void Update()
     {
-        StartCoroutine(FlashObject(sr, normalColor, fc));
-        playerStats.health -= d;
-        RefreshStats();
-        if (playerStats.health <= 0)
+        if (player != null && isInvincible)
         {
-            Destroy(player);
-            RestartCurLevel();
+            player.GetComponent<PlayerMovement>().enabled = false;
         }
+        else if(player != null)
+        {
+            player.GetComponent<PlayerMovement>().enabled = true;
+        }
+    }
+
+    public void DamagePlayer(Enemy e, int d)
+    {
+        if (!isInvincible)
+        {
+            isInvincible = true;
+
+            float ricochetMag = 10;
+            Vector2 ricochetDir = new Vector2(e.transform.position.x- player.transform.position.x, e.transform.position.y-player.transform.position.y);
+            ricochetDir.Normalize();
+            player.GetComponent<Rigidbody2D>().velocity = -ricochetMag * ricochetDir;
+            StartCoroutine(FlashObject(sr, normalColor, fc));
+            playerStats.health -= d;
+            RefreshStats();
+            if (playerStats.health <= 0)
+            {
+                Destroy(player);
+                RestartCurLevel();
+            }
+        }
+        
     }
 
     // Using a coroutine to wait whilst the flashing happens.
@@ -128,6 +153,7 @@ public class GameManager : MonoBehaviour
             }
         }
         toFlash.color = normalColor;
+        isInvincible = false;
     }
 
     public bool GiveHPPot()

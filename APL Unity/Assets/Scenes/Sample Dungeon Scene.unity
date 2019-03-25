@@ -9927,6 +9927,21 @@ PrefabInstance:
       propertyPath: m_isInputParsingRequired
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7421390678967693122, guid: 38960c4164b0e804692dbaf4be7b0e3b,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7421390678967693122, guid: 38960c4164b0e804692dbaf4be7b0e3b,
+        type: 3}
+      propertyPath: m_firstOverflowCharacterIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7421390678967693122, guid: 38960c4164b0e804692dbaf4be7b0e3b,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7954336902942167681, guid: 38960c4164b0e804692dbaf4be7b0e3b,
         type: 3}
       propertyPath: m_havePropertiesChanged
@@ -9966,6 +9981,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.characterCount
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2578828788475780760, guid: 38960c4164b0e804692dbaf4be7b0e3b,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2578828788475780760, guid: 38960c4164b0e804692dbaf4be7b0e3b,
+        type: 3}
+      propertyPath: m_firstOverflowCharacterIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2578828788475780760, guid: 38960c4164b0e804692dbaf4be7b0e3b,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7954336901835037609, guid: 38960c4164b0e804692dbaf4be7b0e3b,
         type: 3}
@@ -10141,36 +10171,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 7421390678967693122, guid: 38960c4164b0e804692dbaf4be7b0e3b,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7421390678967693122, guid: 38960c4164b0e804692dbaf4be7b0e3b,
-        type: 3}
-      propertyPath: m_firstOverflowCharacterIndex
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7421390678967693122, guid: 38960c4164b0e804692dbaf4be7b0e3b,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2578828788475780760, guid: 38960c4164b0e804692dbaf4be7b0e3b,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2578828788475780760, guid: 38960c4164b0e804692dbaf4be7b0e3b,
-        type: 3}
-      propertyPath: m_firstOverflowCharacterIndex
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2578828788475780760, guid: 38960c4164b0e804692dbaf4be7b0e3b,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38960c4164b0e804692dbaf4be7b0e3b, type: 3}

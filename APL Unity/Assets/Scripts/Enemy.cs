@@ -49,8 +49,8 @@ public class Enemy : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.tag == "Player")
-        {
-            gmInstance.DamagePlayer(damage);
+        { 
+            gmInstance.DamagePlayer(this, damage);
         }
     }
 

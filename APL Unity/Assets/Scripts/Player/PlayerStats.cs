@@ -67,5 +67,6 @@ public class PlayerStats : MonoBehaviour
                 newColor = flashColor;
             }
         }
+        toFlash.color = normalColor;
     }
 }

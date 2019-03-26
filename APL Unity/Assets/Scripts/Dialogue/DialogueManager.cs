@@ -9,11 +9,12 @@ public class DialogueManager : MonoBehaviour
     public static DialogueManager instance = null;
     public GameObject dialoguePanel;
 
+    private Animator animator;
+
+
     // Where the Dialogue Appears
-    private Image panelImage;
     private TextMeshProUGUI npcName;
     private TextMeshProUGUI dialogueBox;
-    private TextMeshProUGUI spaceToContinue;
 
     private Queue<string> sentences;
     private string curNpcName = "";
@@ -35,15 +36,12 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         sentences = new Queue<string>();
-        panelImage = dialoguePanel.GetComponent<Image>();
-        npcName = dialoguePanel.GetComponent<DialogueBox>().npcName;
-        dialogueBox = dialoguePanel.GetComponent<DialogueBox>().dialogueBox;
-        spaceToContinue = dialoguePanel.GetComponent<DialogueBox>().spaceToContinue;
 
-        panelImage.enabled = false;
-        npcName.text = "";
-        dialogueBox.text = "";
-        spaceToContinue.enabled = false;
+        // I am so sorry for these names... I can't think of better ones.
+        npcName = dialoguePanel.GetComponent<DialogueBox>().npcName;
+        dialogueBox= dialoguePanel.GetComponent<DialogueBox>().dialogueBox;
+
+        animator = dialoguePanel.GetComponent<Animator>();
     }
     
 
@@ -68,19 +66,15 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
-            panelImage.enabled = true;
+            animator.SetBool("isOpen", true);
             npcName.text = curNpcName;
             dialogueBox.text = sentences.Dequeue();
-            spaceToContinue.enabled = true;
         }
     }
 
     public void EndDialogue()
     {
         sentences.Clear();
-        panelImage.enabled = false;
-        npcName.text = "";
-        dialogueBox.text = "";
-        spaceToContinue.enabled = false;
+        animator.SetBool("isOpen", false);
     }
 }

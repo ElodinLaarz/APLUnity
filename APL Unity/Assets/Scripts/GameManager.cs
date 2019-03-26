@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance = null;              //Static instance of GameManager which allows it to be accessed by any other script.
 
+    DialogueManager dm;
+
+
     [Header("Player")]  
     public GameObject player;
     public Weapon playerWeapon;
@@ -90,6 +93,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        dm = DialogueManager.instance;
         playerStats = player.GetComponent<PlayerStats>();
         sr = player.GetComponent<SpriteRenderer>();
         RefreshStats();
@@ -108,6 +112,12 @@ public class GameManager : MonoBehaviour
         {
             player.GetComponent<PlayerMovement>().enabled = true;
         }
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            dm.DisplayNextSentence();
+        }
+
     }
 
     public void DamagePlayer(Enemy e, int d)

@@ -17,7 +17,7 @@ public class Item : MonoBehaviour
     {
         //Despawn with a little bit of randomness
         itemLifetime += Random.Range(0f,10f);
-        Debug.Log(itemLifetime);
+
         Destroy(this.gameObject, itemLifetime);
         gameManager = GameManager.instance;
     }

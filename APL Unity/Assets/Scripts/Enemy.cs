@@ -6,15 +6,15 @@ public class Enemy : MonoBehaviour
 {
     public int curHP = 100;
     public int expReward = 10;
-    
+
+    public int damage = 10;
+
     //I would like to separate the stats from the enemy mechanics at some point...
     //public EnemyStats enemyStats;
 
     GameManager gmInstance;
 
-
-    // I probably don't need this, but I am not sure how to access the sprite renderer off the top of my head...
-    public SpriteRenderer sr;
+    private SpriteRenderer sr;
     private Color normalColor;
 
     // flashing color
@@ -25,17 +25,16 @@ public class Enemy : MonoBehaviour
     private const int totalFlashes = 4;
     private const float flashTime = totalFlashes * flashSpeed;
 
-    public int damage = 10;
 
     //public GameObject deathEffect;
 
     void Start()
     {
+        sr = gameObject.GetComponent<SpriteRenderer>();
         gmInstance = GameManager.instance;
         normalColor = sr.color;
     }
-
-
+    
     public void TakeDamage(int damage)
     {
         StartCoroutine(FlashObject(sr, normalColor, fc));
@@ -46,11 +45,12 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    // Hitting Player
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.tag == "Player")
         { 
-            gmInstance.DamagePlayer(this, damage);
+            gmInstance.DamagePlayer(gameObject, damage);
         }
     }
 
@@ -75,7 +75,6 @@ public class Enemy : MonoBehaviour
             }
         }
     }
-
 
     void Die()
     {

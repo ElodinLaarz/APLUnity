@@ -120,7 +120,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void DamagePlayer(Enemy e, int d)
+    public void DamagePlayer(GameObject e, int d)
     {
         if (!isInvincible)
         {
@@ -130,7 +130,7 @@ public class GameManager : MonoBehaviour
             Vector2 ricochetDir = new Vector2(e.transform.position.x- player.transform.position.x, e.transform.position.y-player.transform.position.y);
             ricochetDir.Normalize();
             player.GetComponent<Rigidbody2D>().velocity = -ricochetMag * ricochetDir;
-            StartCoroutine(FlashObject(sr, normalColor, fc));
+            StartCoroutine(FlashPlayer(sr, normalColor, fc));
             playerStats.health -= d;
             RefreshStats();
             if (playerStats.health <= 0)
@@ -143,7 +143,7 @@ public class GameManager : MonoBehaviour
     }
 
     // Using a coroutine to wait whilst the flashing happens.
-    IEnumerator FlashObject(SpriteRenderer toFlash, Color originalColor, Color flashColor)
+    IEnumerator FlashPlayer(SpriteRenderer toFlash, Color originalColor, Color flashColor)
     {
         float flashingFor = 0;
         Color newColor = flashColor;
@@ -162,7 +162,7 @@ public class GameManager : MonoBehaviour
                 newColor = flashColor;
             }
         }
-        toFlash.color = normalColor;
+        toFlash.color = originalColor;
         isInvincible = false;
     }
 

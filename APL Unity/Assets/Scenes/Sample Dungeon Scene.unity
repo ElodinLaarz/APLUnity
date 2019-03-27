@@ -10029,6 +10029,26 @@ PrefabInstance:
       propertyPath: mainCam
       value: 
       objectReference: {fileID: 1763107144}
+    - target: {fileID: 5213702928236505228, guid: 30f24081d4a3b9f4087d2e8b6c7009c5,
+        type: 3}
+      propertyPath: dashSpeed
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 5213702928236505228, guid: 30f24081d4a3b9f4087d2e8b6c7009c5,
+        type: 3}
+      propertyPath: dashBuildUp
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 5213702928236505228, guid: 30f24081d4a3b9f4087d2e8b6c7009c5,
+        type: 3}
+      propertyPath: dashSlowDown
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 5213702928236505228, guid: 30f24081d4a3b9f4087d2e8b6c7009c5,
+        type: 3}
+      propertyPath: fullSpeedDuration
+      value: 0.21
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30f24081d4a3b9f4087d2e8b6c7009c5, type: 3}
 --- !u!1001 &7380392505032367695

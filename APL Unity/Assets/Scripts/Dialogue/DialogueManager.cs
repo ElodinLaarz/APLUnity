@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
-    public static DialogueManager instance = null;
+    
     public GameObject dialoguePanel;
 
     private Animator animator;
@@ -19,7 +19,8 @@ public class DialogueManager : MonoBehaviour
     private Queue<string> sentences;
     private string curNpcName = "";
 
-
+    #region Singleton
+    public static DialogueManager instance = null;
     void Awake()
     {
         if (instance != null)
@@ -32,6 +33,7 @@ public class DialogueManager : MonoBehaviour
             instance = this;
         }
     }
+    #endregion
 
     void Start()
     {

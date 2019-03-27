@@ -1,50 +1,25 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
-public class Item : MonoBehaviour
+[CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Item")]
+[System.Serializable]
+public class Item : ScriptableObject
 {
-    public string itemName = "";
-    public Sprite itemImage;
+    // Overwrite the Name Property
+    new public string name = "";
+    public Sprite icon = null;
 
-    public float itemLifetime = 3f;
+    public bool isDefaultItem = false;
+    [Header("Weapon Stats")]
+    #region WeaponStats
+    public int damage = 0;
+    public float attackSpeed = 0;
+    #endregion
 
-    //public bool isPotion = false;
-
-    GameManager gameManager;
-
-    void Start()
-    {
-        //Despawn with a little bit of randomness
-        itemLifetime += Random.Range(0f,10f);
-
-        Destroy(this.gameObject, itemLifetime);
-        gameManager = GameManager.instance;
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (itemName == "Health Potion")
-        {
-            if (gameManager.GiveHPPot() == true)
-            {
-                Destroy(gameObject);
-            }
-            else {
-                Debug.Log("You're already carrying max potions!");
-            }
-        }
-        else if(itemName == "Mana Potion")
-        {
-            gameManager.GiveManaPot();
-        }
-        else
-        {
-            gameManager.GiveItem(this);
-            Destroy(gameObject);
-        }
-
-
-    }
+    [Header("Armor Stats")]
+    #region ArmorStats
+    public int armor = 0;
+    public int speedBonus = 0;
+    #endregion
 
 }

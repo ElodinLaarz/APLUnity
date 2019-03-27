@@ -10,6 +10,7 @@ public class Projectile : MonoBehaviour
     public ParticleSystem enemyHitParticles;
 
     public int damage = 10;
+    public float projectileLifeTime = 20f;
 
     // This flash is implemented via animation vs discrete as is the case with the player. I might
     // The player/enemies to flash via animation at some point, but I think I like the discrete flashes.
@@ -29,6 +30,7 @@ public class Projectile : MonoBehaviour
     {
         gameObject.GetComponent<Rigidbody2D>().velocity = transform.right * speed;
         StartCoroutine(FlashObject());
+        Destroy(gameObject, projectileLifeTime);
     }
 
     void OnCollisionEnter2D(Collision2D hitInfo)

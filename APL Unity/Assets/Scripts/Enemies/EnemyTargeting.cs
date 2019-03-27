@@ -39,7 +39,6 @@ public class EnemyTargeting : MonoBehaviour
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
         AttackPlayer();
         attackCountdown = 1f / attackRate;
-        Debug.Log("I want to fire! " + attackCountdown.ToString());
     }
 
 

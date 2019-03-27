@@ -8,26 +8,14 @@ using System.Collections.Generic;       //Allows us to use Lists.
 
 public class GameManager : MonoBehaviour
 {
-
-    public static GameManager instance = null;              //Static instance of GameManager which allows it to be accessed by any other script.
-
     DialogueManager dm;
+    Inventory inventory;
 
-
-    [Header("Player")]  
+    [Header("Player")]
     public GameObject player;
-    public Weapon playerWeapon;
-    public Sprite playerWeaponSprite;
-
-    public int maxPotions = 5;
-    private int curHpPot = 0;
-    private int curManaPot = 0;
-
-    private int maxInventory = 20;
-    private List<Item> inventory;
+    public Item playerWeapon;
 
     private bool isInvincible = false;
-
 
     [Header("GUI Text Boxes")]
     public TextMeshProUGUI tmpgHealth;
@@ -39,15 +27,13 @@ public class GameManager : MonoBehaviour
 
     [Header("GUI Images")]
     public Image weaponImage;
-    public Image hpImage;
-    public Image manaImage;
-
-
+    //public Image hpImage;
+    //public Image manaImage;
 
     private PlayerStats playerStats;
 
     private SpriteRenderer sr;
-    private Color normalColor;
+    private Color normalColor = new Color(255, 255, 255, 255);
 
     [Header("Flashing Color")]
     // flashing color
@@ -58,6 +44,9 @@ public class GameManager : MonoBehaviour
     private const int totalFlashes = 4;
     private const float flashTime = totalFlashes * flashSpeed;
 
+
+    #region Singleton
+    public static GameManager instance = null;              //Static instance of GameManager which allows it to be accessed by any other script.
     void Awake()
     {
         if (instance != null)
@@ -69,37 +58,25 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
         }
-           
+
         //At some point we'll want to keep the manager around between levels/scenes
         //DontDestroyOnLoad(gameObject);
 
-        //Still have to implement Board Manager
-        //Get a component reference to the attached BoardManager script
-        //boardScript = GetComponent<BoardManager>();
-
-        //Call the InitGame function to initialize the first level 
-        //InitGame();
     }
+    #endregion
 
-    //Initializes the game for each level.
-    void InitGame()
-    {
-
-        //Still have to implement Board Manager
-        //Call the SetupScene function of the BoardManager script, pass it current level number.
-        //boardScript.SetupScene(level);
-
-    }
 
     void Start()
     {
         dm = DialogueManager.instance;
+        inventory = Inventory.instance;
+        inventory.currentWeapon = playerWeapon;
         playerStats = player.GetComponent<PlayerStats>();
         sr = player.GetComponent<SpriteRenderer>();
+        RefreshItem(inventory.currentWeapon);
         RefreshStats();
-        RefreshItem(playerStats.CurWeapon());
 
-        normalColor = sr.color;
+        //normalColor = sr.color;
     }
 
     private void Update()
@@ -108,12 +85,13 @@ public class GameManager : MonoBehaviour
         {
             player.GetComponent<PlayerMovement>().enabled = false;
         }
-        else if(player != null)
+        else if (player != null)
         {
             player.GetComponent<PlayerMovement>().enabled = true;
         }
 
-        if (Input.GetButtonDown("Jump"))
+
+        if (Input.GetButtonDown("Continue"))
         {
             dm.DisplayNextSentence();
         }
@@ -127,10 +105,10 @@ public class GameManager : MonoBehaviour
             isInvincible = true;
 
             float ricochetMag = 10;
-            Vector2 ricochetDir = new Vector2(e.transform.position.x- player.transform.position.x, e.transform.position.y-player.transform.position.y);
+            Vector2 ricochetDir = new Vector2(e.transform.position.x - player.transform.position.x, e.transform.position.y - player.transform.position.y);
             ricochetDir.Normalize();
             player.GetComponent<Rigidbody2D>().velocity = -ricochetMag * ricochetDir;
-            StartCoroutine(FlashPlayer(sr, normalColor, fc));
+            StartCoroutine(FlashPlayer(sr, fc));
             playerStats.health -= d;
             RefreshStats();
             if (playerStats.health <= 0)
@@ -139,11 +117,11 @@ public class GameManager : MonoBehaviour
                 RestartCurLevel();
             }
         }
-        
+
     }
 
     // Using a coroutine to wait whilst the flashing happens.
-    IEnumerator FlashPlayer(SpriteRenderer toFlash, Color originalColor, Color flashColor)
+    IEnumerator FlashPlayer(SpriteRenderer toFlash, Color flashColor)
     {
         float flashingFor = 0;
         Color newColor = flashColor;
@@ -155,49 +133,21 @@ public class GameManager : MonoBehaviour
             flashingFor += flashSpeed;
             if (newColor == flashColor)
             {
-                newColor = originalColor;
+                newColor = normalColor;
             }
             else
             {
                 newColor = flashColor;
             }
         }
-        toFlash.color = originalColor;
+        toFlash.color = normalColor;
         isInvincible = false;
-    }
-
-    public bool GiveHPPot()
-    {
-        bool canPickup = (curHpPot < maxPotions);
-        if (canPickup)
-        {
-            curHpPot++;
-        }
-        RefreshStats();
-        return canPickup;
-    }
-
-    public bool GiveManaPot()
-    {
-        bool canPickup = (curManaPot < maxPotions);
-        if (canPickup)
-        {
-            curManaPot++;
-        }
-        RefreshStats();
-        return canPickup;
-    }
-
-
-    public void GiveItem(Item item)
-    {
-        inventory.Add(item);
     }
 
     public void XpReward(int xp)
     {
         playerStats.curXP += xp;
-        if(playerStats.curXP >= playerStats.lvlUpXP)
+        if (playerStats.curXP >= playerStats.lvlUpXP)
         {
             playerStats.curXP -= playerStats.lvlUpXP;
             playerStats.lvlUpXP *= 2;
@@ -214,20 +164,16 @@ public class GameManager : MonoBehaviour
         tmpgLVL.text = playerStats.curLVL.ToString();
 
         //potions
-        tmpgHpPot.text = curHpPot.ToString() + "/" + maxPotions.ToString();
-        tmpgManaPot.text = curManaPot.ToString() + "/" + maxPotions.ToString();
-    }
+        Vector2 curPots = inventory.CurPots();
+            tmpgHpPot.text = curPots.x.ToString() + "/" + inventory.maxPotions.ToString();
+            tmpgManaPot.text = curPots.y.ToString() + "/" + inventory.maxPotions.ToString();
+}
 
-    void RefreshItem(Weapon weapon)
+    public void RefreshItem(Item weapon)
     {
-        tmpgWeapon.text = weapon.itemName + " -- Damage: " + weapon.weaponDamage;
-        weaponImage.sprite = weapon.weaponSprite;
+        tmpgWeapon.text = weapon.name + " -- Damage: " + weapon.damage;
+        weaponImage.sprite = weapon.icon;
 
-    }
-
-    public Vector2 CurrentPotions()
-    {
-        return new Vector2(curHpPot, curManaPot);
     }
 
     public void RestartCurLevel()

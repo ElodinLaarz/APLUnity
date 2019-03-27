@@ -93,14 +93,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c667e14680f0fa4ea8854e10cffd365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Stick of Disappointment
+  item: {fileID: 11400000, guid: 3e797b747b2160e458654398324ed6de, type: 2}
+  itemLifetime: 3
   firePoint: {fileID: 809999118578410269}
   bulletPrefab: {fileID: 1435067499055978, guid: 8746b7f892de6ea4cb4b8bf426b8e1bb,
     type: 3}
-  sr: {fileID: 8471743717539746872}
   weaponSprite: {fileID: 21300000, guid: 02e3cbe7357cd884f848745b6aec1110, type: 3}
   weaponDamage: 100
-  itemLevel: 1
+  hitParticles: {fileID: 7036652064246910118, guid: b493b2fda87fdbc458bf5be6fe083adc,
+    type: 3}
+  weaponCooldown: 1
+  lastShot: 0
 --- !u!1 &3225165187651577947
 GameObject:
   m_ObjectHideFlags: 0

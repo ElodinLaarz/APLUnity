@@ -7,5 +7,4 @@ public class DialogueBox : MonoBehaviour
 {
     public TextMeshProUGUI npcName;
     public TextMeshProUGUI dialogueBox;
-    public TextMeshProUGUI spaceToContinue;
 }

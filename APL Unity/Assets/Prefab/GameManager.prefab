@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7866735597197092762
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7866735597197092763}
+  - component: {fileID: 7866735597197092760}
+  - component: {fileID: 7866735597197092761}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7866735597197092763
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7866735597197092762}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 200.79875, y: 518.2703, z: -3.0273175}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7866735597197092760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7866735597197092762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a43acd86f619e574091b2ab796b74fad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  playerWeapon: {fileID: 11400000, guid: 3e797b747b2160e458654398324ed6de, type: 2}
+  tmpgHealth: {fileID: 0}
+  tmpgXP: {fileID: 0}
+  tmpgLVL: {fileID: 0}
+  tmpgWeapon: {fileID: 0}
+  tmpgHpPot: {fileID: 0}
+  tmpgManaPot: {fileID: 0}
+  weaponImage: {fileID: 0}
+  fc: {r: 1, g: 0, b: 0, a: 0.79607844}
+--- !u!114 &7866735597197092761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7866735597197092762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8ee555b8bd2c914aae41f41a0f09d19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxPotions: 5
+  items: []
+  currentWeapon: {fileID: 9076534099790673306, guid: 0b0f8ab2db667c54bbf6e19877672cc5,
+    type: 3}

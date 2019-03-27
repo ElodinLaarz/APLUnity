@@ -9,13 +9,11 @@ public class PlayerStats : MonoBehaviour
     public int curXP = 0;
     public int lvlUpXP = 100;
 
-
-    public GameObject weaponObj;
-    private Weapon weapon;
+    //public WeaponObject weaponObj;
 
     private void Awake()
     {
-        weapon = weaponObj.GetComponent<Weapon>();
+       // weapon = weaponObj.GetComponent<Weapon>();
     }
 
     public void ResetStats()
@@ -24,11 +22,6 @@ public class PlayerStats : MonoBehaviour
         curLVL = 1;
         curXP = 0;
         lvlUpXP = 100;
-    }
-
-    public Weapon CurWeapon()
-    {
-        return weapon;
     }
 
 }

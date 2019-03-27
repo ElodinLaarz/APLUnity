@@ -40,6 +40,7 @@ public class WeaponObject : ItemObject {
     void UpdateWeapon()
     {
         Debug.Log("We are updating the weapon to... " + gm.playerWeapon.name);
+        gameObject.GetComponent<SpriteRenderer>().sprite = gm.playerWeapon.icon;
         bulletPrefab.GetComponent<Projectile>().damage = gm.playerWeapon.damage;
         if(gm.playerWeapon.attackSpeed > 0)
         {

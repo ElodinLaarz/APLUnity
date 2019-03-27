@@ -4,40 +4,34 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    // Normal Movements Variables
+    [Header("Walk/Run Speeds")]
     public float walkSpeed = 0;
+    public float maxSpeed;
     private float curSpeed = 0;
     private bool inDash = false;
-    private float timeInDash;
-    private Vector2 dashDirection;
+
+    [Header("Dash Settings")]
+    public float dashSpeed = 17f;
+    public float dashBuildUp = 0.03f;
+    public float dashSlowDown = 0.07f;
+    public float fullSpeedDuration = 0.21f;
+
+    private float dashTimer;
     private Vector2 moveVelocity;
     private Vector2 dashVelocity;
-    public float dashSpeed;
-    public float dashBuildUp;
-    public float dashSlowDown;
-    public float fullSpeedDuration;
 
 
-
-    //Allows us to add the collider of our player to the movement script.
-    public Animator animator;
+    private Animator animator;
     private Rigidbody2D rb;
-
-    //private float sprintSpeed;
-    public float maxSpeed;
-
-
-    // Future Implementations -- Players Stats
-    // public GameObject player;
-    // private CharacterStat plStat;
 
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
+        animator = gameObject.GetComponent<Animator>();
+        fullSpeedDuration -= dashBuildUp;
 
-        // Future Implementations -- Increase Speed as 'speed items' are collected.
-        // plStat = GetComponent<CharacterStat>();
-
+        // Future Implementations -- Increase Speed as 'speed items' are collected. E.g.
+        // plStat = GetComponent<CharacterStat
         // walkSpeed = (float)(plStat.Speed + (plStat.Agility / 5));
         // sprintSpeed = walkSpeed + (walkSpeed / 2);
 
@@ -46,47 +40,55 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         curSpeed = walkSpeed;
-        // maxSpeed = curSpeed;
-
-        // Move senteces
         moveVelocity = new Vector2(Mathf.Lerp(0, Input.GetAxis("Horizontal") * curSpeed, 0.8f),
                                          Mathf.Lerp(0, Input.GetAxis("Vertical") * curSpeed, 0.8f));
 
-        if (Input.GetKey("z") && !inDash)
+        if (Input.GetButtonDown("Dash") && !inDash)
         {
-            dashDirection = rb.velocity;
-            dashDirection.Normalize();
+            // Have a GUI showing the next time the player can Dash
             inDash = true;
-            timeInDash = 0;
+            dashTimer = 0;
+            StartCoroutine(Dash());
         }
+        dashTimer += Time.deltaTime;
 
-        if (inDash)
-        {
-            if (timeInDash < dashBuildUp)
-            {
-                dashVelocity = new Vector2(dashSpeed * (timeInDash / dashBuildUp) * dashDirection.x, dashSpeed * (timeInDash / dashBuildUp) * dashDirection.y);
-            }
-            else if (timeInDash < fullSpeedDuration)
-            {
-                dashVelocity = new Vector2(dashSpeed * dashDirection.x, dashSpeed * dashDirection.y);
-                Debug.Log(dashVelocity);
-            }
-            else if (timeInDash < fullSpeedDuration + dashSlowDown)
-            {
-                dashVelocity = new Vector2(dashSpeed * ((fullSpeedDuration + dashSlowDown - timeInDash) / dashSlowDown) * dashDirection.x, dashSpeed * ((fullSpeedDuration + dashSlowDown - timeInDash) / dashSlowDown) * dashDirection.y);
-            }
-            else
-            {
-                inDash = false;
-                dashVelocity = new Vector2(0, 0);
-                Debug.Log("turned off");
-            }
-            timeInDash = timeInDash + Time.deltaTime;
-        }
-
+        // Set total velocity and give Animator necessary parameters
+        // Need to add Dash Animation
         rb.velocity = dashVelocity + moveVelocity;
         animator.SetFloat("Xspeed", rb.velocity.x);
         animator.SetFloat("Yspeed", rb.velocity.y);
 
+    }
+
+    IEnumerator Dash()
+    {
+        // Implement a default direction when the player isn't moving. E.g. in direction of mouse.
+        if(rb.velocity == Vector2.zero)
+        {
+            inDash = false;
+            yield return null;
+        }
+
+        Vector2 desiredDashVelocity;
+        while (dashTimer <= dashBuildUp)
+        {
+            desiredDashVelocity = rb.velocity.normalized;
+            dashVelocity = new Vector2(Mathf.Lerp(desiredDashVelocity.x, desiredDashVelocity.x*dashSpeed, dashTimer/dashBuildUp), Mathf.Lerp(desiredDashVelocity.y, desiredDashVelocity.y * dashSpeed, dashTimer/dashBuildUp));
+            yield return new WaitForFixedUpdate();
+        }
+
+        yield return new WaitForSeconds(fullSpeedDuration);
+
+        dashTimer = 0;
+        while (dashTimer <= dashSlowDown)
+        {
+            desiredDashVelocity = rb.velocity.normalized * dashSpeed;
+            dashVelocity = new Vector2(Mathf.Lerp(desiredDashVelocity.x, 0, dashTimer/dashSlowDown), Mathf.Lerp(desiredDashVelocity.y, 0, dashTimer/dashSlowDown));
+            yield return new WaitForFixedUpdate();
+        }
+
+        dashVelocity = Vector2.zero;
+        inDash = false;
+        yield return null;
     }
 }

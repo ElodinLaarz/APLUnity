@@ -211,11 +211,11 @@ TextureImporter:
     21300412: 0x72_16x16DungeonTileset.v4_206
     21300414: 0x72_16x16DungeonTileset.v4_207
     21300416: 0x72_16x16DungeonTileset.v4_208
-    21300418: 0x72_16x16DungeonTileset.v4_209
+    21300418: Fire Enemy small
     21300420: 0x72_16x16DungeonTileset.v4_210
     21300422: 0x72_16x16DungeonTileset.v4_211
     21300424: 0x72_16x16DungeonTileset.v4_212
-    21300426: 0x72_16x16DungeonTileset.v4_213
+    21300426: Health Potion
     21300428: 0x72_16x16DungeonTileset.v4_214
     21300430: 0x72_16x16DungeonTileset.v4_215
     21300432: 0x72_16x16DungeonTileset.v4_216
@@ -231,7 +231,7 @@ TextureImporter:
     21300452: 0x72_16x16DungeonTileset.v4_226
     21300454: 0x72_16x16DungeonTileset.v4_227
     21300456: 0x72_16x16DungeonTileset.v4_228
-    21300458: 0x72_16x16DungeonTileset.v4_229
+    21300458: Wizard
     21300460: 0x72_16x16DungeonTileset.v4_230
     21300462: 0x72_16x16DungeonTileset.v4_231
     21300464: 0x72_16x16DungeonTileset.v4_232
@@ -309,7 +309,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -320,7 +320,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -331,7 +331,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -342,7 +342,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -4548,7 +4548,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_16x16DungeonTileset.v4_209
+      name: Fire Enemy small
       rect:
         serializedVersion: 2
         x: 32
@@ -4628,7 +4628,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_16x16DungeonTileset.v4_213
+      name: Health Potion
       rect:
         serializedVersion: 2
         x: 112
@@ -4948,7 +4948,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_16x16DungeonTileset.v4_229
+      name: Wizard
       rect:
         serializedVersion: 2
         x: 144

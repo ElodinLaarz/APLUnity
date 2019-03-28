@@ -73,7 +73,8 @@ public class PlayerMovement : MonoBehaviour
         while (dashTimer <= dashBuildUp)
         {
             desiredDashVelocity = rb.velocity.normalized;
-            dashVelocity = new Vector2(Mathf.Lerp(desiredDashVelocity.x, desiredDashVelocity.x*dashSpeed, dashTimer/dashBuildUp), Mathf.Lerp(desiredDashVelocity.y, desiredDashVelocity.y * dashSpeed, dashTimer/dashBuildUp));
+            dashVelocity = new Vector2(Mathf.Lerp(desiredDashVelocity.x, desiredDashVelocity.x*dashSpeed, dashTimer/dashBuildUp), 
+                                                Mathf.Lerp(desiredDashVelocity.y, desiredDashVelocity.y * dashSpeed, dashTimer/dashBuildUp));
             yield return new WaitForFixedUpdate();
         }
 
@@ -83,7 +84,8 @@ public class PlayerMovement : MonoBehaviour
         while (dashTimer <= dashSlowDown)
         {
             desiredDashVelocity = rb.velocity.normalized * dashSpeed;
-            dashVelocity = new Vector2(Mathf.Lerp(desiredDashVelocity.x, 0, dashTimer/dashSlowDown), Mathf.Lerp(desiredDashVelocity.y, 0, dashTimer/dashSlowDown));
+            dashVelocity = new Vector2(Mathf.Lerp(desiredDashVelocity.x, 0, dashTimer/dashSlowDown), 
+                                                Mathf.Lerp(desiredDashVelocity.y, 0, dashTimer/dashSlowDown));
             yield return new WaitForFixedUpdate();
         }
 

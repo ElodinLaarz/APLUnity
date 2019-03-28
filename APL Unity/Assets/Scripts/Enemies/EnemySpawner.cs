@@ -6,6 +6,7 @@ public class EnemySpawner : MonoBehaviour
 {
     //public static bool existence = true;
     public float spawnRate = 1f;
+    //public GameObject enemiesParent;
 
     public Enemy enemyToSpawn;
 
@@ -22,6 +23,7 @@ public class EnemySpawner : MonoBehaviour
         float randomYVel = Random.Range(-velMag, velMag);
 
         Enemy curEnemy = Instantiate(enemyToSpawn, transform.position, transform.rotation);
+        curEnemy.transform.SetParent(transform.parent.transform);
         curEnemy.GetComponent<Rigidbody2D>().velocity = new Vector2(randomXVel, randomYVel);
         yield return new WaitForSeconds(spawnRate);
         StartCoroutine(Spawning());

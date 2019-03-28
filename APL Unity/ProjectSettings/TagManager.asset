@@ -8,6 +8,7 @@ TagManager:
   - NPC
   - Weapon
   - Armor
+  - Projectile
   layers:
   - Default
   - TransparentFX
@@ -25,7 +26,7 @@ TagManager:
   - Projectiles
   - Enemy Projectiles
   - 
-  - 
+  - Player
   - 
   - 
   - 

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5536576943220385146}
   m_Layer: 14
   m_Name: EnemyProjectile
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,8 +94,8 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
+  m_UseAutoMass: 1
+  m_Mass: 0.03141593
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -136,6 +136,7 @@ MonoBehaviour:
   enemyHitParticles: {fileID: 7036652064246910118, guid: b493b2fda87fdbc458bf5be6fe083adc,
     type: 3}
   damage: 10
+  projectileLifeTime: 20
 --- !u!95 &5536576943220385146
 Animator:
   serializedVersion: 3

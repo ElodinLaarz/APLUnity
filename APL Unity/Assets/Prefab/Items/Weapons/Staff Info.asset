@@ -16,6 +16,6 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 02e3cbe7357cd884f848745b6aec1110, type: 3}
   isDefaultItem: 1
   damage: 10
-  attackSpeed: 1
+  attackSpeed: 1.5
   armor: 0
   speedBonus: 0

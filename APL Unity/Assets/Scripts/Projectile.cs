@@ -16,8 +16,8 @@ public class Projectile : MonoBehaviour
     // The player/enemies to flash via animation at some point, but I think I like the discrete flashes.
     // This is more like a glow
     private const float flashSpeed = 0.5f;
-
-
+       
+    // I want to use this to make generic particles... maybe I won't use it... we'll see.
     public static Projectile CreateComponent(GameObject where, int d)
     {
         Projectile myC = where.AddComponent<Projectile>();
@@ -38,7 +38,7 @@ public class Projectile : MonoBehaviour
         if (hitInfo.collider.tag == "Enemy")
         {
             hitEnemy(hitInfo.collider.GetComponent<Enemy>());
-        }else if(hitInfo.collider.tag == "Player")
+        }else if(hitInfo.collider.tag == "Player" && GameManager.instance.IsInvincible() != true)
         {
             GameManager.instance.DamagePlayer(gameObject, damage);
         }

@@ -8,13 +8,13 @@ public class PlayerMovement : MonoBehaviour
     public float walkSpeed = 0;
     public float maxSpeed;
     private float curSpeed = 0;
-    private bool inDash = false;
 
     [Header("Dash Settings")]
     public float dashSpeed = 17f;
     public float dashBuildUp = 0.03f;
     public float dashSlowDown = 0.07f;
     public float fullSpeedDuration = 0.21f;
+    private bool inDash = false;
 
     private float dashTimer;
     private Vector2 moveVelocity;

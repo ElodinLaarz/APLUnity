@@ -42,7 +42,9 @@ public class GameManager : MonoBehaviour
     // Time between flashes, total number, and total time to flash.
     private const float flashSpeed = 0.1f;
     private const int totalFlashes = 4;
-    private const float flashTime = totalFlashes * flashSpeed;
+    
+    // Time after flashing that player has control
+    public float iFramesLength = 0.5f * flashSpeed * totalFlashes;
 
 
     #region Singleton
@@ -76,21 +78,22 @@ public class GameManager : MonoBehaviour
         RefreshItem(inventory.currentWeapon);
         RefreshStats();
 
+        // Stops ignoring collisions with enemy projectiles whilst invincible
+        //Physics2D.IgnoreLayerCollision(16, 14, false);
+
         //normalColor = sr.color;
     }
 
     private void Update()
     {
-        if (player != null && isInvincible)
+        if (isInvincible)
         {
-            player.GetComponent<PlayerMovement>().enabled = false;
+            Physics2D.IgnoreLayerCollision(16, 8, true);
         }
-        else if (player != null)
+        else
         {
-            player.GetComponent<PlayerMovement>().enabled = true;
+            Physics2D.IgnoreLayerCollision(16, 8, false);
         }
-
-
         if (Input.GetButtonDown("Continue"))
         {
             dm.DisplayNextSentence();
@@ -103,11 +106,28 @@ public class GameManager : MonoBehaviour
         if (!isInvincible)
         {
             isInvincible = true;
+            // Ignore collisions with enemy projectiles whilst invincible
+            // Physics2D.IgnoreLayerCollision(16, 14, true);
+            player.GetComponent<PlayerMovement>().enabled = false;
 
-            float ricochetMag = 10;
-            Vector2 ricochetDir = new Vector2(e.transform.position.x - player.transform.position.x, e.transform.position.y - player.transform.position.y);
+            float ricochetMag = 0f;
+            //Need a non-zero vector... the numbers aren't important.
+            Vector2 ricochetDir = new Vector2(player.transform.position.x - e.transform.position.x, player.transform.position.y - e.transform.position.y);
+
+            // Bounce off enemies more strongly than projectiles
+            if (e.tag == "Enemy")
+            {
+                ricochetMag = 10f;
+                
+            }else if( e.tag == "Projectile")
+            {
+                ricochetMag = 1f;
+                ricochetDir = ricochetDir.normalized + e.GetComponent<Rigidbody2D>().velocity.normalized;
+            }
+
             ricochetDir.Normalize();
-            player.GetComponent<Rigidbody2D>().velocity = -ricochetMag * ricochetDir;
+            player.GetComponent<Rigidbody2D>().velocity = ricochetMag * ricochetDir;
+
             StartCoroutine(FlashPlayer(sr, fc));
             playerStats.health -= d;
             RefreshStats();
@@ -123,14 +143,12 @@ public class GameManager : MonoBehaviour
     // Using a coroutine to wait whilst the flashing happens.
     IEnumerator FlashPlayer(SpriteRenderer toFlash, Color flashColor)
     {
-        float flashingFor = 0;
+        float curFlashes = 0;
         Color newColor = flashColor;
-        while (flashingFor < flashTime)
+        while (curFlashes < totalFlashes)
         {
             toFlash.color = newColor;
-            flashingFor += Time.deltaTime;
             yield return new WaitForSeconds(flashSpeed);
-            flashingFor += flashSpeed;
             if (newColor == flashColor)
             {
                 newColor = normalColor;
@@ -139,9 +157,16 @@ public class GameManager : MonoBehaviour
             {
                 newColor = flashColor;
             }
+            curFlashes += 1;
         }
         toFlash.color = normalColor;
+
+        player.GetComponent<PlayerMovement>().enabled = true;
+        yield return new WaitForSeconds(iFramesLength);
+
         isInvincible = false;
+        // Stops ignoring collisions with enemy projectiles whilst invincible
+        //Physics2D.IgnoreLayerCollision(16, 14, false);
     }
 
     public void XpReward(int xp)
@@ -180,5 +205,10 @@ public class GameManager : MonoBehaviour
     {
         playerStats.ResetStats();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public bool IsInvincible()
+    {
+        return isInvincible;
     }
 }

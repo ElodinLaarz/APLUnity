@@ -48,10 +48,9 @@ MonoBehaviour:
   firePoint: {fileID: 2801745606902173842}
   enemyProjectile: {fileID: 6218428048752270881, guid: 49797f4f49ec4d0488541dfd12bd04f8,
     type: 3}
-  enemyProjSpeed: 12
-  playerIsClose: 0
-  attackRate: 0.5
-  attackCountdown: 1
+  enemyProjSpeed: 6
+  attackRateMin: 0.5
+  attackRateMax: 1
 --- !u!58 &93486760777046421
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -82,6 +81,7 @@ GameObject:
   - component: {fileID: 8588058587684685746}
   - component: {fileID: 5220110283526093297}
   - component: {fileID: 8579493709045935963}
+  - component: {fileID: 5384756840555041972}
   m_Layer: 8
   m_Name: Fire_Enemy
   m_TagString: Enemy
@@ -214,8 +214,8 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 5
+  m_UseAutoMass: 1
+  m_Mass: 0.16188313
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -224,6 +224,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &5384756840555041972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3658513876768302089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8030ba36a9f10048a17169e125befda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashSpeed: 7
+  dashAnimTime: 0.1
+  dashCooldownMin: 0.2
+  dashCooldownMax: 3
+  fullSpeedDuration: 0.21
 --- !u!1 &3871405485654230007
 GameObject:
   m_ObjectHideFlags: 0

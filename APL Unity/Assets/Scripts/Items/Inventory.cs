@@ -59,6 +59,7 @@ public class Inventory : MonoBehaviour {
                 {
                     curHpPot++;
                     itemObj.Despawn();
+                    onItemChangedCallback();
                     return;
                 }
                 else
@@ -72,6 +73,7 @@ public class Inventory : MonoBehaviour {
                 {
                     curManaPot++;
                     Destroy(itemObj);
+                    onItemChangedCallback();
                     return;
                 }
                 else

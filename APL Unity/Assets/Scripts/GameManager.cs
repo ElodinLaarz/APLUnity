@@ -76,7 +76,8 @@ public class GameManager : MonoBehaviour
         playerStats = player.GetComponent<PlayerStats>();
         sr = player.GetComponent<SpriteRenderer>();
         RefreshItem(inventory.currentWeapon);
-        RefreshStats();
+        inventory.onItemChangedCallback += RefreshStats;
+        inventory.onItemChangedCallback();
 
         // Stops ignoring collisions with enemy projectiles whilst invincible
         //Physics2D.IgnoreLayerCollision(16, 14, false);

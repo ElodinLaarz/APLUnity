@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     //public Image hpImage;
     //public Image manaImage;
 
-    private PlayerStats playerStats;
+    public PlayerStats playerStats;
 
     private SpriteRenderer sr;
     private Color normalColor = new Color(255, 255, 255, 255);
@@ -76,6 +76,9 @@ public class GameManager : MonoBehaviour
         playerStats = player.GetComponent<PlayerStats>();
         sr = player.GetComponent<SpriteRenderer>();
         RefreshItem(inventory.currentWeapon);
+        PlayerSetup();
+
+
         inventory.onItemChangedCallback += RefreshStats;
         inventory.onItemChangedCallback();
 
@@ -180,6 +183,13 @@ public class GameManager : MonoBehaviour
             playerStats.curLVL += 1;
         }
         RefreshStats();
+    }
+
+    //Will add more...
+    void PlayerSetup()
+    {
+        playerStats.health = playerStats.baseHealth * playerStats.constitution;
+
     }
 
     void RefreshStats()

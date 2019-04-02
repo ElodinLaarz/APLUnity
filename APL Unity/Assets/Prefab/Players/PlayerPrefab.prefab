@@ -44,7 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eb09723bbcfbd64d9f07a0ad47e846a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCam: {fileID: 0}
 --- !u!1 &6163298961613041761
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,8 +193,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b4f6905b08ac81418518ef32d66780f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 10
-  maxSpeed: 10
+  runSpeedMod: 1.5
+  dashSpeedMod: 1.7
   dashSpeed: 17
   dashBuildUp: 0.03
   dashSlowDown: 0.07
@@ -313,6 +312,14 @@ MonoBehaviour:
   curLVL: 1
   curXP: 0
   lvlUpXP: 100
+  strength: 1
+  dexterity: 1
+  constitution: 1
+  wisdom: 1
+  intelligence: 1
+  charisma: 1
+  baseHealth: 100
+  baseSpeed: 10
 --- !u!1001 &7230279809337069806
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -390,6 +397,11 @@ PrefabInstance:
       propertyPath: weaponDamage
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 9076534099790673306, guid: 0b0f8ab2db667c54bbf6e19877672cc5,
+        type: 3}
+      propertyPath: pivotPosition
+      value: 
+      objectReference: {fileID: 7949342651570556460}
     - target: {fileID: 3225165187651577947, guid: 0b0f8ab2db667c54bbf6e19877672cc5,
         type: 3}
       propertyPath: m_Layer

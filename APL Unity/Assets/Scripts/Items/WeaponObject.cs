@@ -7,6 +7,8 @@ public class WeaponObject : ItemObject {
     public Transform firePoint;
     public GameObject bulletPrefab;
 
+    public Transform pivotPosition;
+
     //public Sprite weaponSprite;
 
     //public int weaponDamage;
@@ -35,7 +37,7 @@ public class WeaponObject : ItemObject {
             shooting = true;
             StartCoroutine(Shoot());
         }
-	}
+    }
 
     void UpdateWeapon()
     {
@@ -57,7 +59,18 @@ public class WeaponObject : ItemObject {
     {
         while (Input.GetButton("Fire1"))
         {
-            Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            Vector3 mousePos = Input.mousePosition;
+            Vector3 screenPoint;
+
+            screenPoint = Camera.main.WorldToScreenPoint(firePoint.position);
+
+            mousePos.x -= screenPoint.x;
+            mousePos.y -= screenPoint.y;
+
+            //This always fires at the mouse, but it gets weird when the mouse is over the Sprite.
+            float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
+            angle += pivotPosition.transform.rotation.z;
+            Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(0,0,angle));
             yield return new WaitForSeconds(weaponCooldown);
         }
         shooting = false;

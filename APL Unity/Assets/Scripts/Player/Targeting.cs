@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Targeting : MonoBehaviour
 {
-    public Camera mainCam;
     private Vector3 mousePos;
     private Vector2 screenPoint;
 
@@ -16,8 +15,8 @@ public class Targeting : MonoBehaviour
  void Update()
     {
         mousePos = Input.mousePosition;
-        mousePos.z = mainCam.transform.position.z;
-        screenPoint = mainCam.WorldToScreenPoint(transform.position);
+        mousePos.z = Camera.main.transform.position.z;
+        screenPoint = Camera.main.WorldToScreenPoint(transform.position);
 
         mousePos.x -= screenPoint.x;
         mousePos.y -= screenPoint.y;

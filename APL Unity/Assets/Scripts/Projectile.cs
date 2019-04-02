@@ -28,10 +28,27 @@ public class Projectile : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        //float angle = TrajectoryAngle();
+        //transform.rotation = Quaternion.Euler(0, 0, angle);
         gameObject.GetComponent<Rigidbody2D>().velocity = transform.right * speed;
         StartCoroutine(FlashObject());
         Destroy(gameObject, projectileLifeTime);
     }
+
+    //float TrajectoryAngle()
+    //{
+    //    Vector3 mousePos = Input.mousePosition;
+    //    Vector3 screenPoint;
+
+    //    mousePos.z = Camera.main.transform.position.z;
+    //    screenPoint = Camera.main.WorldToScreenPoint(transform.position);
+
+    //    mousePos.x -= screenPoint.x;
+    //    mousePos.y -= screenPoint.y;
+
+    //    float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
+    //    return angle * Mathf.Rad2Deg;
+    //}
 
     void OnCollisionEnter2D(Collision2D hitInfo)
     {

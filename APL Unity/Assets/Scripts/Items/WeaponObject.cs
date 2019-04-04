@@ -4,19 +4,24 @@ using UnityEngine;
 
 public class WeaponObject : ItemObject {
 
+    [Header("Positioning")]
+    public Transform pivotPosition;
     public Transform firePoint;
+
+    [Header("Projectiles Specifics")]
+    public ParticleSystem hitParticles;
     public GameObject bulletPrefab;
 
-    public Transform pivotPosition;
+    public GameObject secondaryAttackObj;
 
-    //public Sprite weaponSprite;
 
-    //public int weaponDamage;
-    public ParticleSystem hitParticles;
+    private float primaryCooldown = 0f;
+    private float secondaryCooldown = 0f;
+    private const float secondaryLifetime = 10f;
 
-    public float weaponCooldown = 1f;
+    private bool shootingPrimary = false;
+    private bool shootingSecondary = false;
 
-    private bool shooting = false;
     //public int weaponLevel = 1;
 
     GameManager gm;
@@ -28,25 +33,38 @@ public class WeaponObject : ItemObject {
         inventory = Inventory.instance;
         UpdateWeapon();
         inventory.onItemChangedCallback += UpdateWeapon;
+
     }
 
-    // Update is called once per frame
     void Update () {
-        if (Input.GetButton("Fire1") && !shooting)
+        if (Input.GetButton("Fire1") && !shootingPrimary)
         {
-            shooting = true;
-            StartCoroutine(Shoot());
+            shootingPrimary = true;
+            StartCoroutine(PrimaryAttack());
+        }
+        if (Input.GetButton("Fire2") && !shootingSecondary)
+        {
+            shootingSecondary = true;
+            StartCoroutine(SecondaryAttack());
         }
     }
 
     void UpdateWeapon()
     {
-        Debug.Log("We are updating the weapon to... " + gm.playerWeapon.name);
-        gameObject.GetComponent<SpriteRenderer>().sprite = gm.playerWeapon.icon;
-        bulletPrefab.GetComponent<Projectile>().damage = gm.playerWeapon.damage;
-        if(gm.playerWeapon.attackSpeed > 0)
+        item = gm.playerWeapon;
+        Debug.Log("We are updating the weapon to... " + item.name);
+        gameObject.GetComponent<SpriteRenderer>().sprite = item.icon;
+        bulletPrefab.GetComponent<Projectile>().damage = item.damage;
+
+        //Secondary attack stuff...
+        secondaryAttackObj.name = "Secondary Projectiles";
+        secondaryAttackObj.GetComponent<Explosion>().bulletPrefab = bulletPrefab;
+        secondaryAttackObj.GetComponent<Explosion>().numberOfProjectiles = item.numSecondaryProj;
+        secondaryCooldown = item.secondaryCooldown;
+
+        if (item.attackSpeed > 0)
         {
-            weaponCooldown = 1 / gm.playerWeapon.attackSpeed;
+            primaryCooldown = 1 / item.attackSpeed;
         }
         else
         {
@@ -55,7 +73,7 @@ public class WeaponObject : ItemObject {
 
     }
 
-    IEnumerator Shoot()
+    IEnumerator PrimaryAttack()
     {
         while (Input.GetButton("Fire1"))
         {
@@ -71,8 +89,21 @@ public class WeaponObject : ItemObject {
             float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
             angle += pivotPosition.transform.rotation.z;
             Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(0,0,angle));
-            yield return new WaitForSeconds(weaponCooldown);
+            yield return new WaitForSeconds(primaryCooldown);
         }
-        shooting = false;
+        shootingPrimary = false;
     }
+
+    IEnumerator SecondaryAttack()
+    {
+        Vector3 mousePos = Input.mousePosition;
+        Vector3 worldPoint = Camera.main.ScreenToWorldPoint(mousePos);
+        worldPoint.z = 0;
+
+        GameObject secondAttack = Instantiate(secondaryAttackObj, worldPoint, Quaternion.identity);
+        Destroy(secondAttack, secondaryLifetime);
+        yield return new WaitForSeconds(secondaryCooldown);
+        shootingSecondary = false;
+    }
+
 }

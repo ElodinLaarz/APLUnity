@@ -12,9 +12,10 @@ public class PlayerMovement : MonoBehaviour
     private float maxSpeed;
     private float curSpeed = 0;
 
-    private float dblClickRunTime = 0.1f;
-    private float lastTimeH;
-    private float lastTimeV;
+    // Was going to use this to implement running at some point...
+    //private float dblClickRunTime = 0.1f;
+    //private float lastTimeH;
+    //private float lastTimeV;
 
     [Header("Dash Settings")]
     public float dashSpeed = 17f;
@@ -39,9 +40,9 @@ public class PlayerMovement : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody2D>();
         animator = gameObject.GetComponent<Animator>();
 
-        // Avoids making the player run at the start
-        lastTimeH = -dblClickRunTime;
-        lastTimeV = -dblClickRunTime;
+        // Was going to use this to implement running at some point...
+        //lastTimeH = -dblClickRunTime;
+        //lastTimeV = -dblClickRunTime;
 
         walkSpeed = gameManager.playerStats.baseSpeed * gameManager.playerStats.dexterity;
         curSpeed = walkSpeed;

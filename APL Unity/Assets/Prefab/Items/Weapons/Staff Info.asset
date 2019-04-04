@@ -17,5 +17,7 @@ MonoBehaviour:
   isDefaultItem: 1
   damage: 10
   attackSpeed: 1.5
+  secondaryCooldown: 3
+  numSecondaryProj: 5
   armor: 0
   speedBonus: 0

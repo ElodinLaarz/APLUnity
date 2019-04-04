@@ -13,7 +13,10 @@ public class Item : ScriptableObject
     [Header("Weapon Stats")]
     #region WeaponStats
     public int damage = 0;
-    public float attackSpeed = 0;
+    public float attackSpeed = 0f;
+    public float secondaryCooldown = 0f;
+    public int numSecondaryProj = 0;
+
     #endregion
 
     [Header("Armor Stats")]

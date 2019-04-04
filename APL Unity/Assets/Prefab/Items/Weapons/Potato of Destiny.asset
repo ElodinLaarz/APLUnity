@@ -17,5 +17,6 @@ MonoBehaviour:
   isDefaultItem: 1
   damage: 1000
   attackSpeed: 1000
+  numSecondaryProj: 100
   armor: 0
   speedBonus: 0
